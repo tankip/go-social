@@ -1,0 +1,27 @@
+
+type User {
+  id: ID!
+  name: String!
+  year: Int!
+  friends: [User!]!
+}
+
+input Filters {
+  field: String
+  like: String
+  gte: String
+  lte: String
+}
+
+input ExpressionFilter {
+  expression: Filters
+}
+
+input UserFilter {
+  and: [ExpressionFilter]
+}
+
+type Query {
+  users(_filter: UserFilter): [User!]!
+}
+
