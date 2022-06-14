@@ -14,7 +14,7 @@ var Db *sql.DB
 
 func InitDB() {
 	var err error
-	Db, err = sql.Open("postgres", "postgres://postgres:postgrespw@localhost:55004/go-social?sslmode=disable")
+	Db, err = sql.Open("postgres", "postgres://postgres:postgrespw@postgres/go-social?sslmode=disable")
 	if err != nil {
 		panic(err)
 	}

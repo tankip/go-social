@@ -18,7 +18,7 @@ func main() {
 	}
 	defer stmt.Close()
 	var addedusers []string
-	for i := 0; i < 100; i++ {
+	for i := 0; i < 1000000; i++ {
 		id := uuid.New()
 		addedusers = append(addedusers, id.String())
 		_, err := stmt.Exec(uuid.New(), "user"+strconv.Itoa(i), rand.Intn(100))
@@ -32,7 +32,7 @@ func main() {
 	}
 	defer stmt.Close()
 	rand.Shuffle(len(addedusers), func(i, j int) { addedusers[i], addedusers[j] = addedusers[j], addedusers[i] })
-	for i := 0; i < 100; i++ {
+	for i := 0; i < 100000; i++ {
 		userId := addedusers[i]
 		friendid := addedusers[rand.Intn(len(addedusers))]
 		_, err := stmt.Exec(uuid.New(), userId, friendid)
